@@ -1,0 +1,31 @@
+<h3> Buscar Pessoa </h3>
+<div>
+  <input type="search" 
+  [(ngModel)]="peopleFoundValue"
+  (keyup.enter)="getPeopleByName()"
+  >
+</div>
+
+<p>Pessoa encontrada: {{ (peopleFound$ | async)?.name }}</p>
+
+<h3> Adicionar Pessoa </h3>
+<div>
+  <input type="text" 
+  [(ngModel)]="newPeople"
+  (keyup.enter)="addNewPeople()"
+  >
+</div>
+
+<h3> Listar Pessoa </h3>
+<span *ngFor="let people of people$ | async"
+(click)="getPeopleClicked(people)">
+  {{ people.name }},
+</span>
+
+<h3> Atualizar Nome </h3>
+<input type="text"
+[(ngModel)]="nameUpdate"
+(keyup.enter)="updateNamePeople()"
+>
+<button (click)="removePeople(idUpdate)">Remover</button>
+
